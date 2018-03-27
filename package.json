@@ -30,6 +30,7 @@
     "@mapbox/polyline": "^0.2.0",
     "@mapbox/togeojson": "^0.16.0",
     "mime-types": "^2.1.18",
+    "noty": "^3.2.0-beta",
     "whatwg-fetch": "^2.0.3",
     "xmldom": "^0.1.27"
   }

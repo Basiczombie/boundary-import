@@ -5,6 +5,7 @@ import mime from 'mime-types'
 import DOMParser from 'xmldom'
 import polyline from '@mapbox/polyline'
 import togeo from '@mapbox/togeojson'
+import Noty from 'noty'
 
 // Fetch and place html template
 var pageFragment = fetch('/scripts/boundary-import/html/template.html')
@@ -21,8 +22,23 @@ export default function () {
                 let fileList = e.target.files[0]
                 let poly = fileProcess(fileList)
                 if (!poly) {
-                    poly = 'This is not a KML format file'
+                    new Noty({
+                        type: 'error',
+                        text: 'Invalid FIle Format',
+                        animation: {
+                            open: 'animated bounceInRight',
+                            close: 'animated bounceOutRight'
+                        }
+                    }).show()
                 } else {
+                    new Noty({
+                        type: 'success',
+                        text: 'Polyline Generated',
+                        animation: {
+                            open: 'animated bounceInRight',
+                            close: 'animated bounceOutRight'
+                        }
+                    }).show()
                     boundaryBox.html(poly)
                 }
             })
