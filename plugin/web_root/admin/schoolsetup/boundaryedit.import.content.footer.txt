@@ -1,0 +1,20 @@
+<!-- start PS DATA -->
+  <script>
+    if (!psData) {
+      var psData = {};
+    }
+  </script>
+<!-- end PS DATA -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.js"></script>
+<script>
+  require.config({
+    paths: {
+      'boundary': '/scripts/boundary-import/js/index'
+    }
+  });
+
+  require(['boundary'], (boundary) => {
+    boundary.default();
+  });
+</script>
