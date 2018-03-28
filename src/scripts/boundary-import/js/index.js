@@ -1,18 +1,15 @@
 import $ from 'jquery'
-import fetch from 'fetch'
 import fs from 'fs'
 import mime from 'mime-types'
 import DOMParser from 'xmldom'
 import polyline from '@mapbox/polyline'
 import togeo from '@mapbox/togeojson'
 import Noty from 'noty'
-
-// Fetch and place html template
-var pageFragment = fetch('/scripts/boundary-import/html/template.html')
-    .then(response => response.text())
+import notyCss from 'noty/lib/noty.css'
+import template from '../html/template.html'
 
 export default function () {
-    Promise.all([pageFragment])
+    Promise.all([template])
         .then(function (body) {
             $('#boundary').closest('tr').before(body)
 
@@ -56,9 +53,9 @@ function fileProcess (kmlFile) {
 // Polyline generator
 function poly (kmlFile) {
     // Polyline variables
-    var kml = new DOMParser.DOMParser().parseFromString(fs.readFileSync(kmlFile, 'utf8'))
-    var converted = togeo.kml(kml)
-    var coords = converted.features[1].geometry.coordinates[0].map(element => {
+    let kml = new DOMParser.DOMParser().parseFromString(fs.readFileSync(kmlFile, 'utf8'))
+    let converted = togeo.kml(kml)
+    let coords = converted.features[1].geometry.coordinates[0].map(element => {
         return element.slice(0, 2)
     })
 
