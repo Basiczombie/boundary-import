@@ -4,8 +4,11 @@ import pkgInfo from 'pkginfo'
 pkgInfo(module)
 
 module.exports = {
-  mode: 'development',
-  devtool: 'inline-source-map',
+  mode: 'production',
+  // devtool: 'inline-source-map',
+  performance: {
+    hints: false
+  },
   node: {
     fs: 'empty'
   },

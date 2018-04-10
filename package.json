@@ -54,6 +54,7 @@
   "dependencies": {
     "@mapbox/polyline": "^0.2.0",
     "@mapbox/togeojson": "^0.16.0",
+    "jsonpath": "^1.0.0",
     "mime-types": "^2.1.18",
     "notyf": "^2.0.1",
     "whatwg-fetch": "^2.0.3",

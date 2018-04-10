@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import jsonPath from 'jsonpath'
 import mime from 'mime-types'
 import polyline from '@mapbox/polyline'
 import togeo from '@mapbox/togeojson'
@@ -11,6 +12,7 @@ export default function () {
   Promise.all([template])
     .then(function (body) {
       $('#boundary').closest('tr').before(body)
+      let boundaryBox = document.getElementById('boundary')
       let kml = $('#importSchoolBoundary')
       kml.on('change', async function (e) {
         let fileList = e.target.files[0]
@@ -18,8 +20,10 @@ export default function () {
         if (!poly) {
           notyf.alert('Invalid file format!')
         } else {
-          document.getElementById('boundary').value = poly
-          notyf.confirm('Polyline generated!')
+          if (boundaryBox.value !== poly) {
+            boundaryBox.value = poly
+            notyf.confirm('Polyline generated!')
+          }
         }
       })
     })
@@ -53,7 +57,8 @@ async function poly (kmlFile) {
   let fileString = await toRead(kmlFile)
   let kml = new DOMParser().parseFromString(fileString, 'text/xml')
   let converted = togeo.kml(kml)
-  let coords = converted.features[1].geometry.coordinates[0].map(element => {
+  let kmlCoords = jsonPath.query(converted, '$..geometry.coordinates[-1:]').pop()
+  let coords = kmlCoords.map(element => {
     return element.slice(0, 2)
   })
 
