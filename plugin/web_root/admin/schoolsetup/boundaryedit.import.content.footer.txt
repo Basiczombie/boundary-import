@@ -1,7 +1,5 @@
 <link rel="stylesheet" href="/scripts/boundary-import/css/index.bundle.css">
 <script src="/scripts/boundary-import/js/index.bundle.js"></script>
 <script>
-  require(['boundary'], (boundary) => {
-    boundary.default();
-  });
+    boundary.default()
 </script>
