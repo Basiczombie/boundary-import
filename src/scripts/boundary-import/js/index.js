@@ -7,7 +7,8 @@ import Notyf from 'notyf'
 import notyfCss from 'notyf/dist/notyf.min.css'
 import template from '../html/template.html'
 
-export default function () {
+
+$(() => {
   let notyf = new Notyf()
   Promise.all([template])
     .then(function (body) {
@@ -27,7 +28,7 @@ export default function () {
         }
       })
     })
-}
+})
 
 function fileProcess (kmlFile) {
   let kmlMimeType = 'application/vnd.google-earth.kml+xml'
