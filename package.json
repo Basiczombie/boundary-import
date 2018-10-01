@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/IronCountySchoolDistrict/boundary-import.git"
   },
-  "author": "ICSD",
+  "author": "Issac Gable <issac.gable@ironmail.org>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/IronCountySchoolDistrict/boundary-import/issues"
